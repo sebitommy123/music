@@ -65,12 +65,30 @@ play_recordings([piano])
 - `play_bass(note, duration)` - Acoustic Bass
 - `play_electric_bass(note, duration)` - Electric Bass
 - `play_fretless_bass(note, duration)` - Fretless Bass
-- `play_bass_synth(note, duration)` - Bass Synthesizer
+- `play_bass_synth(note, duration)` - Synth Bass 1
+- `play_bass_synth_2(note, duration)` - Synth Bass 2
 
-**Electronic/Synth:**
-- `play_synth(note, duration)` - Synthesizer (Electric Organ)
-- `play_lead_synth(note, duration)` - Lead Synthesizer
-- `play_pad_synth(note, duration)` - Pad Synthesizer (warm, sustained)
+**Electronic/Synth (Real MIDI Synth Sounds):**
+- `play_synth(note, duration)` - Synth Lead 1 (Sawtooth)
+- `play_lead_synth(note, duration)` - Synth Lead 2 (Sawtooth)
+- `play_lead_synth_square(note, duration)` - Synth Lead 3 (Calliope/Square)
+- `play_lead_synth_chiff(note, duration)` - Synth Lead 4 (Chiff)
+- `play_lead_synth_charang(note, duration)` - Synth Lead 5 (Charang)
+- `play_lead_synth_voice(note, duration)` - Synth Lead 6 (Voice)
+- `play_lead_synth_fifths(note, duration)` - Synth Lead 7 (Fifths)
+- `play_lead_synth_bass_lead(note, duration)` - Synth Lead 8 (Bass + Lead)
+- `play_pad_synth(note, duration)` - Synth Pad 1 (New Age)
+- `play_pad_synth_warm(note, duration)` - Synth Pad 2 (Warm)
+- `play_pad_synth_polysynth(note, duration)` - Synth Pad 3 (Polysynth)
+- `play_pad_synth_choir(note, duration)` - Synth Pad 4 (Choir)
+- `play_pad_synth_bowed(note, duration)` - Synth Pad 5 (Bowed)
+- `play_pad_synth_metallic(note, duration)` - Synth Pad 6 (Metallic)
+- `play_pad_synth_halo(note, duration)` - Synth Pad 7 (Halo)
+- `play_pad_synth_sweep(note, duration)` - Synth Pad 8 (Sweep)
+- `play_synth_brass(note, duration)` - Synth Brass 1
+- `play_synth_brass_2(note, duration)` - Synth Brass 2
+- `play_synth_strings(note, duration)` - Synth Strings 1
+- `play_synth_strings_2(note, duration)` - Synth Strings 2
 
 **Brass:**
 - `play_trumpet(note, duration)` - Trumpet
