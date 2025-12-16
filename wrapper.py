@@ -18,16 +18,16 @@ def start_recording(instrument_type=None):
     return _current_stream
 
 def _add_note(note_with_octave, duration):
-    """Internal helper to add a note to the current stream"""
+    """Internal helper to add a note to the current stream (doesn't advance offset)"""
     global _current_stream, _current_offset
     if _current_stream is None:
         start_recording()
     
     n = note.Note(note_with_octave)
     n.duration.quarterLength = duration
-    n.offset = _current_offset
+    n.offset = _current_offset  # Use current offset, but don't advance it
     _current_stream.insert(_current_offset, n)
-    _current_offset += duration
+    # Note: offset is NOT incremented here - only wait() advances it
 
 def play_piano(note_with_octave, duration):
     """Play a piano note (e.g., 'A4', 'C#5', 'G#6')"""
@@ -262,7 +262,7 @@ def play_drum(drum_type, duration):
     _current_offset += duration
 
 def wait(duration):
-    """Wait/rest for a duration"""
+    """Wait/rest for a duration - this is the ONLY function that advances the offset"""
     global _current_stream, _current_offset
     if _current_stream is None:
         start_recording()
@@ -271,7 +271,7 @@ def wait(duration):
     r.duration.quarterLength = duration
     r.offset = _current_offset
     _current_stream.insert(_current_offset, r)
-    _current_offset += duration
+    _current_offset += duration  # Only wait() advances the offset
 
 def end_recording():
     """End the current recording and return the stream"""
