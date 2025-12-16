@@ -50,13 +50,55 @@ play_recordings([piano])
 
 ### Available Instruments
 
-- `play_piano(note, duration)` - Piano
+**Piano & Keys:**
+- `play_piano(note, duration)` - Acoustic Piano
+- `play_electric_piano(note, duration)` - Electric Piano
+- `play_organ(note, duration)` - Organ
+- `play_harpsichord(note, duration)` - Harpsichord
+- `play_celesta(note, duration)` - Celesta (bell-like)
+
+**Guitars:**
 - `play_guitar(note, duration)` - Acoustic Guitar
-- `play_flute(note, duration)` - Flute
-- `play_synth(note, duration)` - Synthesizer
+- `play_banjo(note, duration)` - Banjo
+
+**Bass:**
+- `play_bass(note, duration)` - Acoustic Bass
+- `play_electric_bass(note, duration)` - Electric Bass
+- `play_fretless_bass(note, duration)` - Fretless Bass
 - `play_bass_synth(note, duration)` - Bass Synthesizer
+
+**Electronic/Synth:**
+- `play_synth(note, duration)` - Synthesizer (Electric Organ)
 - `play_lead_synth(note, duration)` - Lead Synthesizer
-- `play_drum(type, duration)` - Drums (types: 'kick', 'snare', 'hihat', 'crash', 'ride', 'tom')
+- `play_pad_synth(note, duration)` - Pad Synthesizer (warm, sustained)
+
+**Brass:**
+- `play_trumpet(note, duration)` - Trumpet
+- `play_trombone(note, duration)` - Trombone
+- `play_horn(note, duration)` - French Horn
+
+**Woodwinds:**
+- `play_flute(note, duration)` - Flute
+- `play_saxophone(note, duration)` - Alto Saxophone
+- `play_clarinet(note, duration)` - Clarinet
+- `play_oboe(note, duration)` - Oboe
+
+**Strings:**
+- `play_violin(note, duration)` - Violin
+- `play_viola(note, duration)` - Viola
+- `play_cello(note, duration)` - Cello
+- `play_harp(note, duration)` - Harp
+
+**Percussion:**
+- `play_drum(type, duration)` - Drums
+  - Types: `'kick'`, `'snare'`, `'hihat'`, `'crash'`, `'ride'`, `'tom'`, `'tom_high'`, `'open_hihat'`
+- `play_glockenspiel(note, duration)` - Glockenspiel
+
+**Other:**
+- `play_harmonica(note, duration)` - Harmonica
+- `play_accordion(note, duration)` - Accordion
+
+**Utilities:**
 - `wait(duration)` - Rest/wait
 
 ### Example with Multiple Instruments

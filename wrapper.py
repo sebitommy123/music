@@ -71,6 +71,165 @@ def play_lead_synth(note_with_octave, duration):
         start_recording(instrument.ElectricGuitar())
     _add_note(note_with_octave, duration)
 
+# Electronic/Synth Instruments
+def play_electric_piano(note_with_octave, duration):
+    """Play an electric piano note"""
+    global _current_instrument
+    if _current_stream is None or _current_instrument != instrument.ElectricPiano():
+        start_recording(instrument.ElectricPiano())
+    _add_note(note_with_octave, duration)
+
+def play_pad_synth(note_with_octave, duration):
+    """Play a pad synthesizer (warm, sustained sound)"""
+    global _current_instrument
+    if _current_stream is None or _current_instrument != instrument.ElectricOrgan():
+        start_recording(instrument.ElectricOrgan())
+    _add_note(note_with_octave, duration)
+
+def play_bass(note_with_octave, duration):
+    """Play an acoustic bass note"""
+    global _current_instrument
+    if _current_stream is None or _current_instrument != instrument.AcousticBass():
+        start_recording(instrument.AcousticBass())
+    _add_note(note_with_octave, duration)
+
+def play_electric_bass(note_with_octave, duration):
+    """Play an electric bass note"""
+    global _current_instrument
+    if _current_stream is None or _current_instrument != instrument.ElectricBass():
+        start_recording(instrument.ElectricBass())
+    _add_note(note_with_octave, duration)
+
+def play_fretless_bass(note_with_octave, duration):
+    """Play a fretless bass note"""
+    global _current_instrument
+    if _current_stream is None or _current_instrument != instrument.FretlessBass():
+        start_recording(instrument.FretlessBass())
+    _add_note(note_with_octave, duration)
+
+# Brass Instruments
+def play_trumpet(note_with_octave, duration):
+    """Play a trumpet note"""
+    global _current_instrument
+    if _current_stream is None or _current_instrument != instrument.Trumpet():
+        start_recording(instrument.Trumpet())
+    _add_note(note_with_octave, duration)
+
+def play_trombone(note_with_octave, duration):
+    """Play a trombone note"""
+    global _current_instrument
+    if _current_stream is None or _current_instrument != instrument.Trombone():
+        start_recording(instrument.Trombone())
+    _add_note(note_with_octave, duration)
+
+def play_horn(note_with_octave, duration):
+    """Play a French horn note"""
+    global _current_instrument
+    if _current_stream is None or _current_instrument != instrument.Horn():
+        start_recording(instrument.Horn())
+    _add_note(note_with_octave, duration)
+
+# Woodwind Instruments
+def play_saxophone(note_with_octave, duration):
+    """Play a saxophone note (alto sax)"""
+    global _current_instrument
+    if _current_stream is None or _current_instrument != instrument.AltoSaxophone():
+        start_recording(instrument.AltoSaxophone())
+    _add_note(note_with_octave, duration)
+
+def play_clarinet(note_with_octave, duration):
+    """Play a clarinet note"""
+    global _current_instrument
+    if _current_stream is None or _current_instrument != instrument.Clarinet():
+        start_recording(instrument.Clarinet())
+    _add_note(note_with_octave, duration)
+
+def play_oboe(note_with_octave, duration):
+    """Play an oboe note"""
+    global _current_instrument
+    if _current_stream is None or _current_instrument != instrument.Oboe():
+        start_recording(instrument.Oboe())
+    _add_note(note_with_octave, duration)
+
+# String Instruments
+def play_violin(note_with_octave, duration):
+    """Play a violin note"""
+    global _current_instrument
+    if _current_stream is None or _current_instrument != instrument.Violin():
+        start_recording(instrument.Violin())
+    _add_note(note_with_octave, duration)
+
+def play_viola(note_with_octave, duration):
+    """Play a viola note"""
+    global _current_instrument
+    if _current_stream is None or _current_instrument != instrument.Viola():
+        start_recording(instrument.Viola())
+    _add_note(note_with_octave, duration)
+
+def play_cello(note_with_octave, duration):
+    """Play a cello note"""
+    global _current_instrument
+    if _current_stream is None or _current_instrument != instrument.Cello():
+        start_recording(instrument.Cello())
+    _add_note(note_with_octave, duration)
+
+def play_harp(note_with_octave, duration):
+    """Play a harp note"""
+    global _current_instrument
+    if _current_stream is None or _current_instrument != instrument.Harp():
+        start_recording(instrument.Harp())
+    _add_note(note_with_octave, duration)
+
+# Other Instruments
+def play_organ(note_with_octave, duration):
+    """Play an organ note"""
+    global _current_instrument
+    if _current_stream is None or _current_instrument != instrument.Organ():
+        start_recording(instrument.Organ())
+    _add_note(note_with_octave, duration)
+
+def play_harpsichord(note_with_octave, duration):
+    """Play a harpsichord note"""
+    global _current_instrument
+    if _current_stream is None or _current_instrument != instrument.Harpsichord():
+        start_recording(instrument.Harpsichord())
+    _add_note(note_with_octave, duration)
+
+def play_celesta(note_with_octave, duration):
+    """Play a celesta note (bell-like sound)"""
+    global _current_instrument
+    if _current_stream is None or _current_instrument != instrument.Celesta():
+        start_recording(instrument.Celesta())
+    _add_note(note_with_octave, duration)
+
+def play_glockenspiel(note_with_octave, duration):
+    """Play a glockenspiel note"""
+    global _current_instrument
+    if _current_stream is None or _current_instrument != instrument.Glockenspiel():
+        start_recording(instrument.Glockenspiel())
+    _add_note(note_with_octave, duration)
+
+def play_banjo(note_with_octave, duration):
+    """Play a banjo note"""
+    global _current_instrument
+    if _current_stream is None or _current_instrument != instrument.Banjo():
+        start_recording(instrument.Banjo())
+    _add_note(note_with_octave, duration)
+
+def play_harmonica(note_with_octave, duration):
+    """Play a harmonica note"""
+    global _current_instrument
+    if _current_stream is None or _current_instrument != instrument.Harmonica():
+        start_recording(instrument.Harmonica())
+    _add_note(note_with_octave, duration)
+
+def play_accordion(note_with_octave, duration):
+    """Play an accordion note"""
+    global _current_instrument
+    if _current_stream is None or _current_instrument != instrument.Accordion():
+        start_recording(instrument.Accordion())
+    _add_note(note_with_octave, duration)
+
 def play_drum(drum_type, duration):
     """Play a drum sound. Types: 'kick', 'snare', 'hihat', 'crash', 'ride', 'tom'"""
     global _current_stream, _current_offset, _current_instrument

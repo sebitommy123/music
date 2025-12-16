@@ -1,6 +1,11 @@
 from wrapper import (
     start_recording, play_piano, play_guitar, play_flute,
     play_synth, play_bass_synth, play_lead_synth, play_drum,
+    play_electric_piano, play_pad_synth, play_bass, play_electric_bass,
+    play_fretless_bass, play_trumpet, play_trombone, play_horn,
+    play_saxophone, play_clarinet, play_oboe, play_violin, play_viola,
+    play_cello, play_harp, play_organ, play_harpsichord, play_celesta,
+    play_glockenspiel, play_banjo, play_harmonica, play_accordion,
     wait, end_recording, play_recordings
 )
 
