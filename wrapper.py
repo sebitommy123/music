@@ -12,9 +12,15 @@ def start_recording(instrument_type=None):
     global _current_stream, _current_offset, _current_instrument
     _current_stream = stream.Stream()
     _current_offset = 0
-    _current_instrument = instrument_type
+    # Store instrument for comparison - use midiProgram if available, otherwise the object itself
     if instrument_type:
         _current_stream.insert(0, instrument_type)
+        if hasattr(instrument_type, 'midiProgram') and instrument_type.midiProgram is not None:
+            _current_instrument = (instrument_type.midiProgram, getattr(instrument_type, 'instrumentName', ''))
+        else:
+            _current_instrument = instrument_type
+    else:
+        _current_instrument = None
     return _current_stream
 
 def _add_note(note_with_octave, duration):
@@ -32,8 +38,9 @@ def _add_note(note_with_octave, duration):
 def play_piano(note_with_octave, duration):
     """Play a piano note (e.g., 'A4', 'C#5', 'G#6')"""
     global _current_instrument
-    if _current_stream is None or _current_instrument != instrument.Piano():
-        start_recording(instrument.Piano())
+    piano_inst = instrument.Piano()
+    if _current_stream is None or _current_instrument != piano_inst:
+        start_recording(piano_inst)
     _add_note(note_with_octave, duration)
 
 def play_guitar(note_with_octave, duration):
@@ -50,40 +57,229 @@ def play_flute(note_with_octave, duration):
         start_recording(instrument.Flute())
     _add_note(note_with_octave, duration)
 
+# Helper to create custom instrument with MIDI program number
+def _create_synth_instrument(name, midi_program):
+    """Create a custom synth instrument with specific MIDI program"""
+    inst = instrument.Instrument()
+    inst.midiProgram = midi_program
+    inst.instrumentName = name
+    return inst
+
+# Real Electronic/Synth Instruments (using proper MIDI program numbers)
 def play_synth(note_with_octave, duration):
-    """Play a synthesizer note (e.g., 'A4', 'C#5', 'G#6')"""
+    """Play a synthesizer note - Lead 1 (Sawtooth)"""
     global _current_instrument
-    if _current_stream is None or _current_instrument != instrument.ElectricOrgan():
-        start_recording(instrument.ElectricOrgan())
+    synth_inst = _create_synth_instrument("Synth Lead 1", 80)
+    inst_id = (80, "Synth Lead 1")
+    if _current_stream is None or _current_instrument != inst_id:
+        start_recording(synth_inst)
     _add_note(note_with_octave, duration)
 
-def play_bass_synth(note_with_octave, duration):
-    """Play a bass synthesizer note (e.g., 'A2', 'C3')"""
+# Real Electronic/Synth Instruments (using proper MIDI program numbers)
+def play_synth(note_with_octave, duration):
+    """Play a synthesizer note - Lead 1 (Sawtooth)"""
     global _current_instrument
-    if _current_stream is None or _current_instrument != instrument.ElectricBass():
-        start_recording(instrument.ElectricBass())
+    synth_inst = _create_synth_instrument("Synth Lead 1", 80)
+    inst_id = (80, "Synth Lead 1")
+    if _current_stream is None or _current_instrument != inst_id:
+        start_recording(synth_inst)
     _add_note(note_with_octave, duration)
 
 def play_lead_synth(note_with_octave, duration):
-    """Play a lead synthesizer note (e.g., 'A4', 'C#5')"""
+    """Play a lead synthesizer - Lead 2 (Sawtooth)"""
     global _current_instrument
-    if _current_stream is None or _current_instrument != instrument.ElectricGuitar():
-        start_recording(instrument.ElectricGuitar())
+    synth_inst = _create_synth_instrument("Synth Lead 2", 81)
+    inst_id = (81, "Synth Lead 2")
+    if _current_stream is None or _current_instrument != inst_id:
+        start_recording(synth_inst)
     _add_note(note_with_octave, duration)
 
-# Electronic/Synth Instruments
+def play_lead_synth_square(note_with_octave, duration):
+    """Play a square wave lead synth - Lead 3 (Calliope)"""
+    global _current_instrument
+    synth_inst = _create_synth_instrument("Synth Lead 3", 82)
+    inst_id = (82, "Synth Lead 3")
+    if _current_stream is None or _current_instrument != inst_id:
+        start_recording(synth_inst)
+    _add_note(note_with_octave, duration)
+
+def play_lead_synth_chiff(note_with_octave, duration):
+    """Play a chiff lead synth - Lead 4 (Chiff)"""
+    global _current_instrument
+    synth_inst = _create_synth_instrument("Synth Lead 4", 83)
+    inst_id = (83, "Synth Lead 4")
+    if _current_stream is None or _current_instrument != inst_id:
+        start_recording(synth_inst)
+    _add_note(note_with_octave, duration)
+
+def play_lead_synth_charang(note_with_octave, duration):
+    """Play a charang lead synth - Lead 5 (Charang)"""
+    global _current_instrument
+    synth_inst = _create_synth_instrument("Synth Lead 5", 84)
+    inst_id = (84, "Synth Lead 5")
+    if _current_stream is None or _current_instrument != inst_id:
+        start_recording(synth_inst)
+    _add_note(note_with_octave, duration)
+
+def play_lead_synth_voice(note_with_octave, duration):
+    """Play a voice lead synth - Lead 6 (Voice)"""
+    global _current_instrument
+    synth_inst = _create_synth_instrument("Synth Lead 6", 85)
+    inst_id = (85, "Synth Lead 6")
+    if _current_stream is None or _current_instrument != inst_id:
+        start_recording(synth_inst)
+    _add_note(note_with_octave, duration)
+
+def play_lead_synth_fifths(note_with_octave, duration):
+    """Play a fifths lead synth - Lead 7 (Fifths)"""
+    global _current_instrument
+    synth_inst = _create_synth_instrument("Synth Lead 7", 86)
+    inst_id = (86, "Synth Lead 7")
+    if _current_stream is None or _current_instrument != inst_id:
+        start_recording(synth_inst)
+    _add_note(note_with_octave, duration)
+
+def play_lead_synth_bass_lead(note_with_octave, duration):
+    """Play a bass lead synth - Lead 8 (Bass + Lead)"""
+    global _current_instrument
+    synth_inst = _create_synth_instrument("Synth Lead 8", 87)
+    inst_id = (87, "Synth Lead 8")
+    if _current_stream is None or _current_instrument != inst_id:
+        start_recording(synth_inst)
+    _add_note(note_with_octave, duration)
+
+def play_pad_synth(note_with_octave, duration):
+    """Play a pad synthesizer - Pad 1 (New Age)"""
+    global _current_instrument
+    synth_inst = _create_synth_instrument("Synth Pad 1", 88)
+    inst_id = (88, "Synth Pad 1")
+    if _current_stream is None or _current_instrument != inst_id:
+        start_recording(synth_inst)
+    _add_note(note_with_octave, duration)
+
+def play_pad_synth_warm(note_with_octave, duration):
+    """Play a warm pad synth - Pad 2 (Warm)"""
+    global _current_instrument
+    synth_inst = _create_synth_instrument("Synth Pad 2", 89)
+    inst_id = (89, "Synth Pad 2")
+    if _current_stream is None or _current_instrument != inst_id:
+        start_recording(synth_inst)
+    _add_note(note_with_octave, duration)
+
+def play_pad_synth_polysynth(note_with_octave, duration):
+    """Play a polysynth pad - Pad 3 (Polysynth)"""
+    global _current_instrument
+    synth_inst = _create_synth_instrument("Synth Pad 3", 90)
+    inst_id = (90, "Synth Pad 3")
+    if _current_stream is None or _current_instrument != inst_id:
+        start_recording(synth_inst)
+    _add_note(note_with_octave, duration)
+
+def play_pad_synth_choir(note_with_octave, duration):
+    """Play a choir pad synth - Pad 4 (Choir)"""
+    global _current_instrument
+    synth_inst = _create_synth_instrument("Synth Pad 4", 91)
+    inst_id = (91, "Synth Pad 4")
+    if _current_stream is None or _current_instrument != inst_id:
+        start_recording(synth_inst)
+    _add_note(note_with_octave, duration)
+
+def play_pad_synth_bowed(note_with_octave, duration):
+    """Play a bowed pad synth - Pad 5 (Bowed)"""
+    global _current_instrument
+    synth_inst = _create_synth_instrument("Synth Pad 5", 92)
+    inst_id = (92, "Synth Pad 5")
+    if _current_stream is None or _current_instrument != inst_id:
+        start_recording(synth_inst)
+    _add_note(note_with_octave, duration)
+
+def play_pad_synth_metallic(note_with_octave, duration):
+    """Play a metallic pad synth - Pad 6 (Metallic)"""
+    global _current_instrument
+    synth_inst = _create_synth_instrument("Synth Pad 6", 93)
+    inst_id = (93, "Synth Pad 6")
+    if _current_stream is None or _current_instrument != inst_id:
+        start_recording(synth_inst)
+    _add_note(note_with_octave, duration)
+
+def play_pad_synth_halo(note_with_octave, duration):
+    """Play a halo pad synth - Pad 7 (Halo)"""
+    global _current_instrument
+    synth_inst = _create_synth_instrument("Synth Pad 7", 94)
+    inst_id = (94, "Synth Pad 7")
+    if _current_stream is None or _current_instrument != inst_id:
+        start_recording(synth_inst)
+    _add_note(note_with_octave, duration)
+
+def play_pad_synth_sweep(note_with_octave, duration):
+    """Play a sweep pad synth - Pad 8 (Sweep)"""
+    global _current_instrument
+    synth_inst = _create_synth_instrument("Synth Pad 8", 95)
+    inst_id = (95, "Synth Pad 8")
+    if _current_stream is None or _current_instrument != inst_id:
+        start_recording(synth_inst)
+    _add_note(note_with_octave, duration)
+
+def play_bass_synth(note_with_octave, duration):
+    """Play a bass synthesizer - Synth Bass 1"""
+    global _current_instrument
+    synth_inst = _create_synth_instrument("Synth Bass 1", 38)
+    inst_id = (38, "Synth Bass 1")
+    if _current_stream is None or _current_instrument != inst_id:
+        start_recording(synth_inst)
+    _add_note(note_with_octave, duration)
+
+def play_bass_synth_2(note_with_octave, duration):
+    """Play a bass synthesizer - Synth Bass 2"""
+    global _current_instrument
+    synth_inst = _create_synth_instrument("Synth Bass 2", 39)
+    inst_id = (39, "Synth Bass 2")
+    if _current_stream is None or _current_instrument != inst_id:
+        start_recording(synth_inst)
+    _add_note(note_with_octave, duration)
+
+def play_synth_brass(note_with_octave, duration):
+    """Play a synth brass - Synth Brass 1"""
+    global _current_instrument
+    synth_inst = _create_synth_instrument("Synth Brass 1", 62)
+    inst_id = (62, "Synth Brass 1")
+    if _current_stream is None or _current_instrument != inst_id:
+        start_recording(synth_inst)
+    _add_note(note_with_octave, duration)
+
+def play_synth_brass_2(note_with_octave, duration):
+    """Play a synth brass - Synth Brass 2"""
+    global _current_instrument
+    synth_inst = _create_synth_instrument("Synth Brass 2", 63)
+    inst_id = (63, "Synth Brass 2")
+    if _current_stream is None or _current_instrument != inst_id:
+        start_recording(synth_inst)
+    _add_note(note_with_octave, duration)
+
+def play_synth_strings(note_with_octave, duration):
+    """Play synth strings - Synth Strings 1"""
+    global _current_instrument
+    synth_inst = _create_synth_instrument("Synth Strings 1", 50)
+    inst_id = (50, "Synth Strings 1")
+    if _current_stream is None or _current_instrument != inst_id:
+        start_recording(synth_inst)
+    _add_note(note_with_octave, duration)
+
+def play_synth_strings_2(note_with_octave, duration):
+    """Play synth strings - Synth Strings 2"""
+    global _current_instrument
+    synth_inst = _create_synth_instrument("Synth Strings 2", 51)
+    inst_id = (51, "Synth Strings 2")
+    if _current_stream is None or _current_instrument != inst_id:
+        start_recording(synth_inst)
+    _add_note(note_with_octave, duration)
+
+# Electronic/Synth Instruments (keeping electric piano)
 def play_electric_piano(note_with_octave, duration):
     """Play an electric piano note"""
     global _current_instrument
     if _current_stream is None or _current_instrument != instrument.ElectricPiano():
         start_recording(instrument.ElectricPiano())
-    _add_note(note_with_octave, duration)
-
-def play_pad_synth(note_with_octave, duration):
-    """Play a pad synthesizer (warm, sustained sound)"""
-    global _current_instrument
-    if _current_stream is None or _current_instrument != instrument.ElectricOrgan():
-        start_recording(instrument.ElectricOrgan())
     _add_note(note_with_octave, duration)
 
 def play_bass(note_with_octave, duration):

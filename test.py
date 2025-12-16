@@ -14,15 +14,15 @@ if __name__ == "__main__":
     start_recording()
     
     # These all play simultaneously at the same time
-    play_piano("A4", 0.5)     # standard A4
-    play_piano("A5", 0.5)     # one octave higher
-    play_piano("C4", 1.5)
+    play_synth("A4", 0.5)     # standard A4
+    play_synth("A5", 0.5)     # one octave higher
+    play_synth("C4", 1.5)
     
     # Wait moves time forward
     wait(0.5)
     
     # This plays after the wait
-    play_piano("G#6", 0.25)
+    play_synth("G#6", 0.25)
     
     piano = end_recording()
     
